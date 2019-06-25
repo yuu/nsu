@@ -1,6 +1,7 @@
 #ifndef NSU_STRING
 #define NSU_STRING
 
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -26,6 +27,16 @@ std::vector<std::string> split(const std::string &str,
     }
 
     return fl;
+}
+
+std::vector<std::string> split(std::istringstream &in, char delm) {
+    std::vector<std::string> ret;
+    std::string s;
+    while (std::getline(in, s, delm)) {
+        ret.emplace_back(s);
+    }
+
+    return ret;
 }
 
 }  // namespace nsu
